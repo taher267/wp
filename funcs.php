@@ -1,0 +1,2 @@
+add_theme_support
+register_default_headers
