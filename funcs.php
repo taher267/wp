@@ -25,6 +25,7 @@ function twentytwenty_sidebar_registration() {
 add_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
 
 //google font themeshaper
+//https://themeshaper.com/2014/08/13/how-to-add-google-fonts-to-wordpress-themes/
 function theme_slug_fonts_url() {
 $fonts_url = '';
  
