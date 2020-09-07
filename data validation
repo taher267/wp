@@ -1,0 +1,8 @@
+esc_html // input:text
+<?php echo esc_html($myName)?>
+esc_url // href
+<?php echo esc_url($myName)?>
+esc_attr // javascript
+<a href="#" onclick="alert('<?php echo esc_js($javaScrit)?>')"></a>
+esc_js // attribute
+<a href="#" class="<?php echo esc_attr($icon)?>"></a>
