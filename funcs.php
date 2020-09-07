@@ -23,3 +23,10 @@ function twentytwenty_sidebar_registration() {
 }
 
 add_action( 'widgets_init', 'twentytwenty_sidebar_registration' );
+
+//google font themeshaper
+function theme_slug_fonts_url() {
+$fonts_url = '';
+ 
+return $fonts_url;
+}
