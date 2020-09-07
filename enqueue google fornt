@@ -1,0 +1,31 @@
+
+	//Googlefonts
+	function calling_gFont_resource(){
+		wp_enqueue_style( 'gfonts', theme_slugs_fonts_url(),array(),'1.0.0');
+	}
+add_action('wp_enqueue_scripts', 'calling_gFont_resource');
+
+function theme_slugs_fonts_url() {
+$fonts_url = '';
+$OpenSans = _x( 'on', 'OpenSans font: on or off', 'theme-slug' );
+$Roboto = _x( 'on', 'Roboto font: on or off', 'theme-slug' );
+	if ( 'off' !== $OpenSans || 'off' !== $Roboto ) {
+	$font_families = array();
+	if('off' !== $OpenSans){
+		$font_families[] ='OpenSans:ital,wght@0,400;1,400;1,700';
+	}
+
+	if('off' !== $Roboto){
+		$font_families[] ='Roboto:ital,wght@0,100;0,300;0,500;1,100;1,400';
+	}
+
+	$query_args = array(
+	'family' => urlencode( implode( '|', $font_families ) ),
+	'subset' => urlencode( 'thisValue' ), // it will come from url detail css like /*thisValue*/
+);
+	$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+
+}
+ 
+return esc_url_raw( $fonts_url);
+}
