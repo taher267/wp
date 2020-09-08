@@ -1,0 +1,12 @@
+//show tag in post
+
+<?php 
+if(has_tag()):
+  $tags=get_the_tags();
+  $cates= get_the_category();
+foreach ($tags as $tag): 
+  //tagLINK
+   echo get_tag_link($tag->term_id);
+   //tagName
+   echo $tag->name;
+   endforeach; endif;?>
