@@ -1,0 +1,6 @@
+<p class="jaza_single_Prev_next">
+					<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+				    <?php previous_post_link('%link', '« Previous post'); ?>
+					<?php next_post_link('%link', 'Next post »'); ?>
+					<?php endwhile; // end of the loop. ?>
+				</p>
