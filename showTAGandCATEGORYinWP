@@ -24,3 +24,8 @@ function show_tags(){
         return trim($output, $separator);
     }
 }
+//system 3
+?php 
+							if(has_tag()):
+								the_tags( '', ', ', '<br />' );
+							endif;?>
