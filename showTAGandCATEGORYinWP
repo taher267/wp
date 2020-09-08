@@ -1,4 +1,4 @@
-//show tag in post into funcs.php add_theme_support('title-tag'); system 01
+//show tag in post NOT REQIRE THEME SUPPORT INTO FUNCTIONS.PHP system 01
 
 <?php 
 if(has_tag()):
