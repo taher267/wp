@@ -13,7 +13,7 @@ foreach ($tags as $tag):
 
 
 //-------------------------------
-//into funcs.php add_theme_support('title-tag'); system 01
+//NOT REQIRE THEME SUPPORT INTO FUNCTIONS.PHP system 02
 function show_tags(){
     $post_tags = get_the_tags();
     $separator = ' | ';
