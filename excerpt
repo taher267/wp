@@ -1,0 +1,4 @@
+//excerpt of trim words
+
+
+<?php echo wp_trim_words(get_the_excerpt(),5) ; ?>
