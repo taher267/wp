@@ -2,3 +2,21 @@
 
 
 <?php echo wp_trim_words(get_the_excerpt(),5) ; ?>
+
+
+
+
+//2222 
+
+// Excerpt Function functions.php
+function excerpt($num) {
+	$limit = $num+1;
+	$excerpt = explode(' ', get_the_excerpt(), $limit);
+	array_pop($excerpt);
+	$excerpt = implode(" ",$excerpt)." <a href='" .get_permalink($post->ID) ." ' class='readmore'>Continue Reading &raquo;</a>";
+	echo $excerpt;
+}
+
+//where apply
+
+<?php echo excerpt('5') ?>
