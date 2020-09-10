@@ -1,0 +1,2 @@
+comments_popup_link('No comment','single comment','% comments','CommentDesignClass','comment off when any How turn comment Off');
+comments_template();
