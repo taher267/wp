@@ -1,0 +1,23 @@
+<div class="content_blog_a fix">
+<div class="e_blog_A">
+                   <?php echo get_avatar( get_the_author_meta('ID'),96); ?>
+</div>
+
+<div class="blog_a_text">
+  <h5><a href="#"><?php get_author_posts_url(get_the_author_meta('ID'),get_the_author_meta('user_nicename')) ?><?php the_author( ); ?></a></h5>
+  <p><?php the_author_meta('description') ?></p>
+</div>
+</div>
+
+
+//html file
+
+<div class="content_blog_a fix">
+<div class="e_blog_A">
+   <img src="images/we_are_alwayes.jpg" alt="a_text_pic">
+</div>
+<div class="blog_a_text">
+  <h5><a href="#">Tomas Anderson</a></h5>
+  <p>Lorem ipsum dolor sit amet, lacus eu erat integer bibendum rutrum, sed arcu molestie, in quis ornare, rhoncus scelerisque velit, nam</p>
+</div>
+</div>
