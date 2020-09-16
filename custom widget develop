@@ -1,0 +1,59 @@
+
+
+/**
+ * Adds Jaza_Consult_Widget widget.
+ */
+class Jaza_Consult_Widget extends WP_Widget {
+
+	/**
+	 * Register widget with WordPress.
+	 */
+	function __construct() {
+		parent::__construct(
+			'Jaza_Consult_widget', // Base ID
+			esc_html__( 'Jaza Widget', 'text_domain' ), // Name
+			array( 'description' => esc_html__( 'A Jaza Consult Widget', 'text_domain' ), ) // Args
+		);
+	}
+	public function form( $instance ) {
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Jaza\'s title', 'text_domain' );
+		$description = ! empty( $instance['description'] ) ? $instance['description'] : esc_html__( 'Jaza\'s Description', 'text_domain' );
+		?>
+		<p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'text_domain' ); ?></label> 
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+
+		<p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'description' ) ); ?>"><?php esc_attr_e( 'Description:', 'text_domain' ); ?></label> 
+		<textarea class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'description' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'description' ) ); ?>" type="text" placeholder="<?php echo esc_attr( $description ); ?>"></textarea>
+		</p>
+		<?php 
+	}
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+		$instance['description'] = ( ! empty( $new_instance['description'] ) ) ? sanitize_text_field( $new_instance['description'] ) : '';
+
+		return $instance;
+	}
+	public function widget( $args, $instance ) {
+		echo $args['before_widget'];
+		if ( ! empty( $instance['title'] ) ) {
+			echo $args['before_title'] . apply_filters( 'Title', $instance['title'] ) . $args['after_title'];
+		}?>
+<br>
+		<?php if ( ! empty( $instance['description'] ) ) {
+			echo apply_filters( 'Description', $instance['description'] );
+		}
+		echo $args['after_widget'];
+	}
+	
+
+} // class Jaza_Consult_Widget
+
+// register Jaza_Consult_Widget widget
+function register_Jaza_Consult_widget() {
+    register_widget( 'Jaza_Consult_Widget' );
+}
+add_action( 'widgets_init', 'register_Jaza_Consult_widget' );
