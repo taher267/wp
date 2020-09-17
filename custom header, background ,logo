@@ -5,3 +5,8 @@ add_theme_support( 'custom-header',array(
 	'default-image' => get_theme_file_uri().'/assets/images/banner.jpg',
 	
 ));
+
+
+
+//customBackground
+the_custom_header_markup()
