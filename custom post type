@@ -1,0 +1,17 @@
+register_post_type('identifySlag/id',array());
+
+
+//output
+
+$outputQry= new WP_Query(
+'post_type' =>'identifySlag/id',
+);
+
+while($outputQry->have_posts):$outputQry->the_post()
+endwhile;
+
+
+
+//add tag and Category
+
+taxonomies=>array('category','post_tag'),
