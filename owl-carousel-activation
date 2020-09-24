@@ -1,3 +1,7 @@
+//shortcode mest be use on raw code no text file of king composer wpBakery [industry_hero_slide]
+
+
+
 <script>
 		 jQuery(window).load(function(){
 		 	jQuery("#industrySlide_'.$sliderRandNum.'").owlCarousel({
