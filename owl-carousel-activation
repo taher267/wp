@@ -11,3 +11,59 @@
 
 		 });
 	</script>
+	
+	
+	
+	
+//Industry Service Box
+function industry_slider_shortcode($atts,$content=null){
+	 extract( shortcode_atts( array(
+        'count' => 2,
+        'type' => 'post',
+    ), $atts) );
+
+
+	 $arg=array(
+	 	'post_type' => 'industry_slide',
+	 	'posts_per_page' =>2,
+	 	'order' => 'ASC',
+	 );
+	$get_post= new WP_Query($arg);
+	$sliderRandNum=rand(487384,999999);
+	if ($get_post->have_posts()):
+		 $industry_hero_slider_markup = '
+		 <script>
+		 jQuery(window).load(function(){
+		 	jQuery("#industrySlide_'.$sliderRandNum.'").owlCarousel({
+		 		items:1,
+		 		loop:true,
+		 		dots:true,
+		 		nav:true,
+		 		autoplay:false,
+		 		navText:["<i class=\'fa fa-angle-left\'><i><i class=\'fa fa-angle-right\'><i>"]
+		 		});
+
+		 	});
+		 </script>
+		 		<div id="industrySlide_'.$sliderRandNum.'" class="owl-carousel industry_slides">';
+		 $slide_id=get_the_ID();
+			 while ($get_post->have_posts()) : $get_post->the_post();
+			  $industry_hero_slider_markup.='<div style="background:url('.get_the_post_thumbnail_url().')" class="industry_single_slide">
+				  <div class="industry_single_slide_inner">
+					  	<div class="container">
+					  		<div class="row">
+					  			<div class="col-md-6">
+					  				<h2>'.esc_html(get_the_title()).'</h2>'
+					  				.wpautop(esc_html(get_the_content($slide_id))).'
+			  					</div>
+					  		</div>
+					  	</div>
+				  </div>
+			  </div>';
+			endwhile;
+			wp_reset_postdata();
+		 $industry_hero_slider_markup.='</div>';
+	 endif;
+	return $industry_hero_slider_markup;
+}
+add_shortcode('industry_hero_slide', 'industry_slider_shortcode');
