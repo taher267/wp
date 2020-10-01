@@ -1,0 +1,10 @@
+functions.php
+
+require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+
+
+wp_nav_menu( array(
+'depth'           => '3',
+           'walker'          => new WP_Bootstrap_Navwalker(),
+       'fallback_cb' => 'WP_Bootstrp_Navwalker::fallback',
+            ) ); 
