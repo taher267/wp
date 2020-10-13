@@ -1,0 +1,94 @@
+<?php 
+function consult_portfolio() {
+
+	$labels = array(
+		'name'               => __( 'Portfolio', 'consult-revo' ),
+		'singular_name'      => __( 'Singular Name', 'consult-revo' ),
+		'add_new'            => _x( 'Add New Portfolio', 'consult-revo', 'consult-revo' ),
+		'all_items'          => __( 'All Posts', 'consult-revo' ),
+		'new_item'           => __( 'New Singular Name', 'consult-revo' ),
+		'menu_name'          => __( 'PORTFOLIO', 'consult-revo' ),
+	);
+
+	$args = array(
+		'labels'              => $labels,
+		'description'         => 'description',
+		'public'              => false,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 3,
+		'menu_icon'           => 'dashicons-welcome-learn-more',
+		'supports'            => array(
+			'title',
+			'editor',
+			'thumbnail',
+			'custom-fields',
+		),
+		//'taxonomies' => ['category','post_tag'],
+	);
+
+	register_post_type( 'portfolio', $args );
+}
+
+add_action('init', 'consult_portfolio');
+
+function consult_portfolio_taxononomy() {
+
+	$labels = array(
+		'name'                  => _x( 'Port-cat', 'Taxonomy plural name', 'consult-revo' ),
+		'singular_name'         => _x( 'Singular Name', 'Taxonomy singular name', 'consult-revo' ),
+		'search_items'          => __( 'Search Plural Name', 'consult-revo' ),
+		'popular_items'         => __( 'Popular Plural Name', 'consult-revo' ),
+		'all_items'             => __( 'All Category', 'consult-revo' ),
+		'menu_name'             => __( 'Category', 'consult-revo' ),
+		
+	);
+
+	$args = array(
+
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => ['slug' => 'portfolio'],
+		
+	);
+
+	register_taxonomy( 'Portfolio', array( 'portfolio' ), $args );
+}
+
+add_action( 'init', 'consult_portfolio_taxononomy',0);
+
+
+add_action('init', 'consult_portfolio');
+
+function consult_portfolio_tags() {
+
+	$labels = array(
+		'name'                  => _x( 'Port-tag', 'Taxonomy plural name', 'consult-revo' ),
+		'singular_name'         => _x( 'Singular Name', 'Taxonomy singular name', 'consult-revo' ),
+		'search_items'          => __( 'Search Plural Name', 'consult-revo' ),
+		'popular_items'         => __( 'Popular Plural Name', 'consult-revo' ),
+		'all_items'             => __( 'All Category', 'consult-revo' ),
+		'menu_name'             => __( 'Tags', 'consult-revo' ),
+		
+	);
+
+	$args = array(
+
+		'hierarchical'      => false,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => ['slug' => 'portfolio'],
+		
+	);
+
+	register_taxonomy( 'tags', array( 'portfolio' ), $args );
+}
+
+add_action( 'init', 'consult_portfolio_tags',0);
+
