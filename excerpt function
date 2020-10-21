@@ -1,0 +1,6 @@
+function tExcerpt($limit=15){
+	$content= get_the_content();
+	$make_index=explode(' ', $content);
+	$index_slice= array_slice($make_index, 0,$limit);
+	echo implode(' ', $index_slice);
+}
