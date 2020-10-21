@@ -1,0 +1,6 @@
+  <?php 
+  $x=0;
+      if (is_array($slider_item)):foreach($slider_item as $item):
+          $x++;?>
+          <b class="<?php if($x==1){echo "is-visible";}?>"><?php echo esc_html($item); ?></b>
+  <?php endforeach; endif;?>
